@@ -1,5 +1,5 @@
 import React from 'react'
-import './assets/css/home.css'
+import '../assets/css/home.css'
 
 export default function Homepage() {
     return (
