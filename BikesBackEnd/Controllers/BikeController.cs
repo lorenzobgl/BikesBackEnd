@@ -10,8 +10,8 @@ namespace BikesBackEnd.Controllers
     public class BikeController : Controller
     {
         private readonly BikeServices _bikeservice;
-        private readonly StationService _stationService;
-        public BikeController(BikeServices bikeServices, StationService stationService)
+        private readonly StationServices _stationService;
+        public BikeController(BikeServices bikeServices, StationServices stationService)
         {
             _bikeservice = bikeServices;
             _stationService = stationService;

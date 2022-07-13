@@ -9,9 +9,9 @@ namespace BikesBackEnd.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        UtenteService _userService;
+        private readonly UtenteServices _userService;
 
-        public LoginController(UtenteService userService)
+        public LoginController(UtenteServices userService)
         {
             _userService = userService;
         }

@@ -6,8 +6,8 @@ namespace BikesBackEnd.Services
     public class BikeServices
     {
         public readonly AppDbContext _appDbContext;
-        public readonly StationService _stationService;
-        public BikeServices(AppDbContext appDbContext, StationService stationService)
+        public readonly StationServices _stationService;
+        public BikeServices(AppDbContext appDbContext, StationServices stationService)
         {
             _appDbContext = appDbContext;
             _stationService = stationService;
