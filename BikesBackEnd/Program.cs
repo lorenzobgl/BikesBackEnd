@@ -4,13 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));;
-
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<AppDbContext>();;
+var connectionString = builder.Configuration.GetConnectionString("defaultDBConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
 
 // Add services to the container.
 
@@ -18,8 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var connectionstring = builder.Configuration.GetConnectionString("defaultDBConnection");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionstring));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 //added users and roles
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
