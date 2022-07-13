@@ -33,7 +33,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<BikeServices>();
-builder.Services.AddScoped<StationService>();
+builder.Services.AddScoped<StationServices>();
 //builder.Services.AddScoped<UtenteService>();
 
 var app = builder.Build();
