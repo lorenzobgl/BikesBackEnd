@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 
 export default function Bikes() {
     function getBikes() {
-        const url = "https://localhost:7066/WeatherForecast"
+        const url = "https://localhost:7066/api/Bike/GetBikes"
         fetch(url, {
             method: 'GET'
         })
             .then(response => response.json())
             .then(responseFromServer => {
                 console.log(responseFromServer);
-                setBikes(usersFromServer)
+                setBikes(responseFromServer)
             })
             .catch((error) => {
                 console.log(error)
@@ -18,6 +18,8 @@ export default function Bikes() {
     }
     const [bikes,setBikes]= useState([]);
   return (
+    <>
+    <button onClick={getBikes}>Genera Lista</button>
       <div className="table-responsive mt-5">
           <table className="table table-dark border-light">
               <thead>
@@ -31,11 +33,11 @@ export default function Bikes() {
               </thead>
               <tbody>
                   {bikes.map((bike) => (
-                      <tr key={bike.Id} >
-                          <th scope="row">{bike.Id}</th>
-                          <td>{bike.Type}</td>
-                          <td>{bike.IsWorking}</td>
-                          <td>{bike.LockOn}</td>
+                      <tr key={bike.id} >
+                          <th scope="row">{bike.id}</th>
+                          <td>{bike.type}</td>
+                          <td>{bike.isWorking}</td>
+                          <td>{bike.lockOn}</td>
                           <td className="d-flex justify-space-between">
                               <button className="btn btn-primary ">Edit</button>
                               <button className="btn btn-danger">Delete</button>
@@ -45,5 +47,6 @@ export default function Bikes() {
               </tbody>
           </table>
       </div>
+    </>
   )
 }
