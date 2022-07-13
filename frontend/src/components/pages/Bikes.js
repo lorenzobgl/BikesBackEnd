@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import '../assets/css/bikes.css'
+import Constant from '../assets/Constants'
+
 
 export default function Bikes() {
     function getBikes() {
-        const url = "https://localhost:7066/api/Bike/GetBikes"
+        const url = Constant.API_URL_GET_ALL_BIKES
         fetch(url, {
             method: 'GET'
         })
@@ -15,6 +18,24 @@ export default function Bikes() {
                 console.log(error)
                 alert(error);
             })
+    }
+    function changeLock(id){
+        const url = `${Constant.API_URL_LOCK_UNLOCK_BIKE}/${id}`
+         fetch(url,{
+            method:"PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            },    
+        }).then(getBikes()); 
+    }
+
+    function deleteBike(id){
+        const url = `${Constant.API_URL_DELETE_BIKE}/${id}`
+         fetch(url, {
+            method: "DELETE",
+
+        })
+        getBikes();
     }
     const [bikes,setBikes]= useState([]);
   return (
@@ -36,11 +57,11 @@ export default function Bikes() {
                       <tr key={bike.id} >
                           <th scope="row">{bike.id}</th>
                           <td>{bike.type}</td>
-                          <td>{bike.isWorking}</td>
-                          <td>{bike.lockOn}</td>
-                          <td className="d-flex justify-space-between">
-                              <button className="btn btn-primary ">Edit</button>
-                              <button className="btn btn-danger">Delete</button>
+                          <td>{bike.isWorking?"Perfetto":"Rotto"}</td>
+                          <td>{bike.lockOn?"Disponibile":"Non Disponibile"}</td>
+                          <td className="">
+                              <button className="btn btn-primary me-1" onClick={() => changeLock(bike.id)}>{bike.lockOn ? <i class="fa-solid fa-lock"></i> : <i class="fa-solid fa-lock-open"></i>}</button>
+                              <button className="btn btn-danger ms-1" onClick={()=>deleteBike(bike.id)}><i class="fa-solid fa-trash"></i></button>
                           </td>
                       </tr>
                   ))}

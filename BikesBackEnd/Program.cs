@@ -30,7 +30,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<BikeServices>();
 builder.Services.AddScoped<StationService>();
-builder.Services.AddScoped<UtenteService>();
+//builder.Services.AddScoped<UtenteService>();
 
 var app = builder.Build();
 
