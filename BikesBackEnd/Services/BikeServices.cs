@@ -50,8 +50,11 @@ namespace BikesBackEnd.Services
         {
             var bike = findBikebyId(IdBike);
             var station = _stationService.getStationbyId(IdStation);
-            bike.Station = station;
-            _appDbContext.Update(bike);
+            if (!(station ==null))
+            {
+                bike.IdStation = IdStation;
+                _appDbContext.Update(bike);
+            }
             _appDbContext.SaveChanges();
         }
         public void DeleteBike(Guid Id)
