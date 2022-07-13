@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function Bikes() {
     function getBikes() {
-        const url = "https://localhost:7066/Bike"
+        const url = "https://localhost:7066/api/Bike/GetBikes"
         fetch(url, {
             method: 'GET'
         })
@@ -19,7 +19,6 @@ export default function Bikes() {
     const [bikes,setBikes]= useState([]);
   return (
     <>
-    {/* {getBikes} */}
     <button onClick={getBikes}>Genera Lista</button>
       <div className="table-responsive mt-5">
           <table className="table table-dark border-light">
