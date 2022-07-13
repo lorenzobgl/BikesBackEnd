@@ -1,0 +1,8 @@
+.hero{
+    background-image: url('../img/hero-bike.jpg');
+    width: 100vw;
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -60px;
+}
