@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BikesBackEnd.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BikesBackEnd.Data
 {
@@ -8,5 +9,7 @@ namespace BikesBackEnd.Data
         {
 
         }
+        public virtual DbSet<Bike> Bikes { get; set; }
+        public virtual DbSet<BikeStation> BikeStations { get; set; }
     }
 }
