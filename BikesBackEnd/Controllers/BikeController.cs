@@ -35,7 +35,7 @@ namespace BikesBackEnd.Controllers
                 Type = bikeform.Type,
                 IsWorking = bikeform.IsWorking,
                 LockOn = bikeform.LockOn,
-                IdStation = new Guid("d70552c0-6185-4c78-88c0-f56272678bc9")
+                IdStation = new Guid("d7472677-0752-4378-9341-b22615491faf")
             };
             _bikeservice.addBike(bike);
             return Ok("Bici aggiunta!");
