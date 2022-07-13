@@ -26,7 +26,14 @@ export default function Bikes() {
             headers: {
                 'Content-Type': 'application/json'
             },    
-        }).then(getBikes()); 
+         }).then(responseFromServer => {
+             console.log(responseFromServer);
+             getBikes();
+         })
+
+        // setTimeout(() => {
+        //     getBikes()
+        // }, 100);
     }
 
     function deleteBike(id){
