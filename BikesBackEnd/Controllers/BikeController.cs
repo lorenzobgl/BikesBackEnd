@@ -46,7 +46,7 @@ namespace BikesBackEnd.Controllers
         //[Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("RemoveBike")]
-        public IActionResult DeletedBike([FromBody] Guid id)
+        public IActionResult DeletedBike([FromQuery] Guid id)
         {
             _bikeservice.DeleteBike(id);
             return Ok("Bici eliminata");
@@ -54,7 +54,7 @@ namespace BikesBackEnd.Controllers
         //[Authorize(Roles = "Admin")]
         [HttpPatch]
         [Route("LockUnlock")]
-        public IActionResult LockUnlock([FromBody] Guid id)
+        public IActionResult LockUnlock([FromQuery] Guid id)
         {
             _bikeservice.PatchLock(id);
             return Ok(_bikeservice.findBikebyId(id).LockOn);
@@ -62,7 +62,7 @@ namespace BikesBackEnd.Controllers
         //[Authorize(Roles = "Admin")]
         [HttpPatch]
         [Route("RunningorNot")]
-        public IActionResult RunOrNotRun([FromBody] Guid id)
+        public IActionResult RunOrNotRun([FromQuery] Guid id)
         {
             _bikeservice.PatchWorking(id);
             return Ok(_bikeservice.findBikebyId(id).LockOn);
