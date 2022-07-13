@@ -1,5 +1,6 @@
 using BikesBackEnd.Data;
 using BikesBackEnd.Services;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<BikeServices>();
 builder.Services.AddScoped<StationService>();
-
+builder.Services.AddScoped<UtenteService>();
 
 var app = builder.Build();
 
