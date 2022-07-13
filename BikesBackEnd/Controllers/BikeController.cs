@@ -6,7 +6,7 @@ using BikesBackEnd.Services;
 namespace BikesBackEnd.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class BikeController : Controller
     {
         private readonly BikeServices _bikeservice;
@@ -17,7 +17,8 @@ namespace BikesBackEnd.Controllers
             _stationService = stationService;
         }
 
-        [HttpGet(Name = "GetBikes")]
+        [HttpGet]
+        [Route("GetBikes")]
         public List<Bike> GetBikes()
         {
             List<Bike> bikes = _bikeservice.getBikes();
@@ -26,7 +27,8 @@ namespace BikesBackEnd.Controllers
         }
         
         //[Authorize(Roles = "Admin")]
-        [HttpPost(Name = "AddABike")]
+        [HttpPost]
+        [Route("AddABike")]
         public IActionResult CreatedBike([FromBody] Bike bikeform)
         {
             Bike bike = new Bike()
@@ -42,19 +44,29 @@ namespace BikesBackEnd.Controllers
         }
         
         //[Authorize(Roles = "Admin")]
-        [HttpDelete(Name = "RemoveBike")]
+        [HttpDelete]
+        [Route("RemoveBike")]
         public IActionResult DeletedBike([FromBody] Guid id)
         {
             _bikeservice.DeleteBike(id);
             return Ok("Bici eliminata");
         }
         //[Authorize(Roles = "Admin")]
-        [HttpPatch(Name = "LockUnlock")]
+        [HttpPatch]
+        [Route("LockUnlock")]
         public IActionResult LockUnlock([FromBody] Guid id)
         {
             _bikeservice.PatchLock(id);
             return Ok(_bikeservice.findBikebyId(id).LockOn);
         }
-        
+        //[Authorize(Roles = "Admin")]
+        [HttpPatch]
+        [Route("RunningorNot")]
+        public IActionResult RunOrNotRun([FromBody] Guid id)
+        {
+            _bikeservice.PatchWorking(id);
+            return Ok(_bikeservice.findBikebyId(id).LockOn);
+        }
+
     }
 }
