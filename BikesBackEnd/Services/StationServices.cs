@@ -3,11 +3,11 @@ using BikesBackEnd.Data;
 
 namespace BikesBackEnd.Services
 {
-    public class StationService
+    public class StationServices
     {
         public readonly AppDbContext _appDbContext;
         
-        public StationService(AppDbContext appDbContext)
+        public StationServices(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

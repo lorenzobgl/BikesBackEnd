@@ -4,14 +4,12 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BikesBackEnd.Services
 {
-    public class UtenteService
+    public class UtenteServices
     {
-        private readonly AppDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public UtenteService(AppDbContext context, UserManager<IdentityUser> userManager)
+        public UtenteServices(UserManager<IdentityUser> userManager)
         {
-            _context = context;
             _userManager = userManager;
         }
 
@@ -31,5 +29,6 @@ namespace BikesBackEnd.Services
                 return true;
             }
         }
+        
     }
 }
