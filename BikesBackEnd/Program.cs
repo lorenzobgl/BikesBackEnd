@@ -32,8 +32,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
-
-
+builder.Services.AddScoped<BikeServices>();
+builder.Services.AddScoped<StationService>();
+//builder.Services.AddScoped<UtenteService>();
 
 var app = builder.Build();
 
