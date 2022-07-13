@@ -1,7 +1,7 @@
-﻿using NTTBikes.Models;
-using NTTBikes.Data;
+﻿using BikesBackEnd.Models;
+using BikesBackEnd.Data;
 
-namespace NTTBikes.Services
+namespace BikesBackEnd.Services
 {
     public class StationService
     {
